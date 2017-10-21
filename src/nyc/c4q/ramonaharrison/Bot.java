@@ -23,14 +23,11 @@ public class Bot {
     public Bot() {
     }
     public void sendPigLatinResponse(){
-
-
-
+        while(Slack.listMessages("C7KE0KTM4").isOk()) {
             ListMessagesResponse allResponses = Slack.listMessages("C7KE0KTM4");
             List<Message> allMessages = allResponses.getMessages();
             Message lastMessage = allMessages.get(0);
             String text = lastMessage.getText();
-        while(!allResponses.getMessages().isEmpty()) {
             if (text.contains("<@U7JJ7S534>")) {
                 text=text.substring(11);
                 PigLatin pigMessage = new PigLatin(text);
